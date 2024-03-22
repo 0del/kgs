@@ -29,5 +29,9 @@ docker build . -t kgs
 ```sh
 docker run -p 8080:8080 kgs:latest
 ```
-
+3. Curl - Get key
+```sh
+curl localhost:8080/key
+# {"key":"l6yCLFr"}
+```
 Thanks !
