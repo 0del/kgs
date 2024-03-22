@@ -19,21 +19,21 @@ type Generator interface {
 	New() (string, error)
 }
 
-type Options func(generator)
+type Options func(*generator)
 
 func WithLen(l int8) Options {
-	return func(g generator) {
+	return func(g *generator) {
 		g.len = l
 	}
 }
 func WithChars(chars []byte) Options {
-	return func(g generator) {
+	return func(g *generator) {
 		g.chars = chars
 	}
 }
 
 func NewGen(opts ...Options) Generator {
-	g := generator{}
+	g := &generator{}
 
 	g.len = defaultLen
 	g.chars = defaultBase62
@@ -49,11 +49,11 @@ type generator struct {
 	chars []byte
 }
 
-func (g generator) New() (string, error) {
+func (g *generator) New() (string, error) {
 	return g.newChars()
 }
 
-func (g generator) newChars() (string, error) {
+func (g *generator) newChars() (string, error) {
 	charsLen := len(g.chars)
 	uri := make([]byte, g.len)
 	uriIndex := make([]byte, g.len)
