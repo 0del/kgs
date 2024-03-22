@@ -54,7 +54,6 @@ func (g *generator) New() (string, error) {
 }
 
 func (g *generator) newChars() (string, error) {
-	charsLen := len(g.chars)
 	uri := make([]byte, g.len)
 	uriIndex := make([]byte, g.len)
 
@@ -64,8 +63,7 @@ func (g *generator) newChars() (string, error) {
 	}
 
 	for k, v := range uriIndex {
-		index := int(v)
-		uri[k] = g.chars[index%charsLen]
+		uri[k] = g.chars[int(v)%len(g.chars)]
 	}
 
 	return string(uri), nil
