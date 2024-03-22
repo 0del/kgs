@@ -1,6 +1,6 @@
 # kgs - Key generate service
 
-Generation key support for shorten url, unique key.
+Generation keys support for shorten url, unique key.
 
 ### Usage 
 #### 1. Go code
